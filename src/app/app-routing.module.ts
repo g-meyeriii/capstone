@@ -5,6 +5,26 @@ import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
 import { UserEditComponent } from './user/user-edit/user-edit.component';
 
+import { VendorListComponent } from './vendor/vendor-list/vendor-list.component';
+import { VendorDetailComponent } from './vendor/vendor-detail/vendor-detail.component';
+import { VendorCreateComponent } from './vendor/vendor-create/vendor-create.component';
+import { VendorEditComponent } from './vendor/vendor-edit/vendor-edit.component';
+
+import { ProductListComponent } from './product/product-list/product-list.component';
+import { ProductDetailComponent } from './product/product-detail/product-detail.component';
+import { ProductCreateComponent } from './product/product-create/product-create.component';
+import { ProductEditComponent } from './product/product-edit/product-edit.component';
+
+import { RequestListComponent } from './request/request-list/request-list.component';
+import { RequestDetailComponent } from './request/request-detail/request-detail.component';
+import { RequestCreateComponent } from './request/request-create/request-create.component';
+import { RequestEditComponent } from './request/request-edit/request-edit.component';
+
+import { RequestLineListComponent } from './request-line/request-line-list/request-line-list.component';
+import { RequestLineDetailComponent } from './request-line/request-line-detail/request-line-detail.component';
+import { RequestLineCreateComponent } from './request-line/request-line-create/request-line-create.component';
+import { RequestLineEditComponent } from './request-line/request-line-edit/request-line-edit.component';
+
 
 const routes: Routes = [
   {path: "",redirectTo:"/users/list", pathMatch: "full"},
@@ -14,7 +34,26 @@ const routes: Routes = [
   {path: "users/create", component: UserCreateComponent},
   {path: "users/edit/:id", component: UserEditComponent},
 
-  
+  {path: "vendors/list",component: VendorListComponent},
+  {path: "vendors/detail/:id", component: VendorDetailComponent},
+  {path: "vendors/create", component: VendorCreateComponent},
+  {path: "vendors/edit/:id", component: VendorEditComponent},
+
+  {path: "products/list",component: ProductListComponent},
+  {path: "products/detail/:id", component: ProductDetailComponent},
+  {path: "products/create", component: ProductCreateComponent},
+  {path: "products/edit/:id", component: ProductEditComponent},
+
+  {path: "request/list", component: RequestListComponent},
+  {path: "request/detail/:id", component: RequestDetailComponent},
+  {path: "request/create", component: RequestCreateComponent},
+  {path: "request/edit/:id", component: RequestEditComponent},
+
+  {path: "requestline/list", component: RequestLineListComponent},
+  {path: "requestline/detail/:id", component: RequestLineDetailComponent},
+  {path: "requestline/create", component: RequestLineCreateComponent},
+  {path: "requestline/edit/:id", component: RequestLineEditComponent},
+
   {path: "**", component: UserListComponent}
 ];
 

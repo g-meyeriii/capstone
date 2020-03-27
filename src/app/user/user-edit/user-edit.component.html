@@ -1,1 +1,68 @@
-<p>user-edit works!</p>
+<p>User Edit</p>
+
+<app-menu></app-menu>
+<div class= "component">
+    <table class="table table-striped table-sm">
+        <tr>
+            <td>Id:</td>
+            <td>
+                <input [(ngModel)]="user.id" type= "text" size = "10"diabled>
+            </td>
+        </tr>
+        <tr>
+            <td>Username:</td>
+            <td>
+                <input [(ngModel)]="user.userName" type= "text" size = "20">
+            </td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td>
+                <input [(ngModel)]="user.password" type= "text" size = "10">
+            </td>
+        </tr>
+        <tr>
+            <td>Firstname</td>
+            <td>
+                <input [(ngModel)]="user.firstName" type= "text" size = "10">
+            </td>
+        </tr>
+        <tr>
+            <td>Lastname</td>
+            <td>
+                <input [(ngModel)]="user.lastName" type= "text" size = "10">
+            </td>
+        </tr>
+        <tr>
+            <td>Phone</td>
+            <td>
+                <input [(ngModel)]="user.phone" type= "text" size = "10">
+            </td>
+        </tr>
+        <tr> 
+            <td>Email</td>
+            <td>
+                <input [(ngModel)]="user.email" type= "text" size = "40">
+            </td>
+        </tr>
+        <tr>
+            <td>IsReviewer</td>
+            <td>
+                <input [(ngModel)]="user.isReviewer" type= "checkbox" size = "10">
+            </td>
+        </tr>
+        <tr>
+            <td>IsAdmin</td>
+            <td>
+                <input [(ngModel)]="user.isAdmin" type= "checkbox" size = "10">
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button (click)="save()" class="btn btn-primary">Save</button>
+            </td>
+  
+        </tr>
+    </table>
+</div>
+

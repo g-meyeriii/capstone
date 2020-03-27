@@ -1,12 +1,12 @@
 export class User {
     id: number =0;
-    username: string="";
+    userName: string="";
     password: string="";
-    firstname: string="";
-    lastname: string="";
+    firstName: string="";
+    lastName: string="";
     phone: string="";
     email: string="";
-    isReviwer: boolean= false;
+    isReviewer: boolean= false;
     isAdmin: boolean= false;
 
     constructor(){}

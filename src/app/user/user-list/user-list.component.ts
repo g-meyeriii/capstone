@@ -8,7 +8,7 @@ import { User } from '../user.class';
   styleUrls: ['./user-list.component.css']
 })
 export class UserListComponent implements OnInit {
-  users: User[]=[];
+  users: User[] = [];
   searchCriteria: string ="";
 
   constructor(
@@ -19,7 +19,7 @@ export class UserListComponent implements OnInit {
     this.user.list().subscribe(
       res => {
         this.users =res;
-      console.debug("User-list:",res);
+      console.debug("Users-list", res);
       },
       err => {
         console.error(err);

@@ -1,1 +1,38 @@
-<p>product-list works!</p>
+<p>Product List</p>
+<nav class="navbar navbar-inverse">
+    <app-menu></app-menu>
+</nav>
+<a routerLink="/products/create">Create</a> |
+<input [(ngModel)]="searchCriteria" type="text" placeholder="Search">
+<div class = "component">
+    <table class = "table table-sm">
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Justification</th>
+            <th>RejectionReason</th>
+            <th>DeliveryMode</th>
+            <th>Staus</th>
+            <th>Total</th>
+            <th>UserId</th>
+            <th>Actions</th>
+        </tr>
+        <tr *ngFor="let p of products | sort: 'id'">
+            <td>{{p.id}}</td>
+            <td>{{p.description}}</td>
+            <td>{{p.rejectionReason}}</td>
+            <td>{{p.delieryMode}}</td>
+            <td>{{p.status}}</td>
+            <td>{{p.Total}}</td>
+            <td>{{p.userId}}</td>
+            <td>
+                <a routerLink="/products/detail/{{p.id}}">Detail</a> |
+                <a routerLink="/products/edit/{{p.id}}">Edit</a>
+            </td>
+
+
+        </tr>
+
+        
+    </table>
+</div>

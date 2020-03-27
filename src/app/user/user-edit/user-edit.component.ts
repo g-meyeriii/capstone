@@ -34,12 +34,13 @@ export class UserEditComponent implements OnInit {
     this.usersvc.get(id).subscribe(
       res => {
         this.user = res;
-        console.debug("User",res);
+        console.debug("User edited:",res);
+        this.router.navigateByUrl("/users/list");
       },
       err => {
         console.error("Error editing user");
       }
-    )
+    );
   }
 
 }

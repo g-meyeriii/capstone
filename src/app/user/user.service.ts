@@ -3,14 +3,13 @@ import { Observable } from 'rxjs';
 import { User } from './user.class';
 import { HttpClient } from '@angular/common/http';
 
-const url: string ="http://localhost:5000/api/users";
+const url: string ="http://localhost:58145/api/users";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   
-
   list():Observable<User[]>{
     return this.http.get(`${url}`) as Observable<User[]>;
   }
