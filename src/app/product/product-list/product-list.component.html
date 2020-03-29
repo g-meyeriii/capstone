@@ -8,23 +8,22 @@
     <table class = "table table-sm">
         <tr>
             <th>Id</th>
-            <th>Description</th>
-            <th>Justification</th>
-            <th>RejectionReason</th>
-            <th>DeliveryMode</th>
-            <th>Staus</th>
-            <th>Total</th>
-            <th>UserId</th>
+            <th>PartNbr</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Unit</th>
+            <th>PhotoPath</th>
+            <th>VendorId</th>
             <th>Actions</th>
         </tr>
-        <tr *ngFor="let p of products | sort: 'id'">
+        <tr *ngFor="let p of products | productSearch :searchCriteria | sort: 'id'">
             <td>{{p.id}}</td>
-            <td>{{p.description}}</td>
-            <td>{{p.rejectionReason}}</td>
-            <td>{{p.delieryMode}}</td>
-            <td>{{p.status}}</td>
-            <td>{{p.Total}}</td>
-            <td>{{p.userId}}</td>
+            <td>{{p.partNbr}}</td>
+            <td>{{p.name}}</td>
+            <td>{{p.price}}</td>
+            <td>{{p.unit}}</td>
+            <td>{{p.photoPath}}</td>
+            <td>{{p.vendorId}}</td>
             <td>
                 <a routerLink="/products/detail/{{p.id}}">Detail</a> |
                 <a routerLink="/products/edit/{{p.id}}">Edit</a>
