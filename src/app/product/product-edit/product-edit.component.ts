@@ -16,6 +16,7 @@ export class ProductEditComponent implements OnInit {
       res => {
         this.product = res;
         console.debug("Product changes saved", res);
+        this.router.navigateByUrl("/products/list");
       },
       err => {
         console.error("Error product changes failed", err);
@@ -35,6 +36,7 @@ export class ProductEditComponent implements OnInit {
       res => {
         this.product = res;
         console.debug("Product:", res);
+       
       },
       err => {
         console.error("Error editing product:",err);

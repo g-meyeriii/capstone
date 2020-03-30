@@ -17,6 +17,7 @@ export class ProductCreateComponent implements OnInit {
       res => {
         this.product =res;
         console.debug("Created new product", res);
+        this.router.navigateByUrl("/products/list");
       },
       err => {
         console.error("Error creating product", err);

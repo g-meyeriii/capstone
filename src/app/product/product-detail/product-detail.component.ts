@@ -17,6 +17,7 @@ export class ProductDetailComponent implements OnInit {
       res => {
         this.product = res;
         console.debug("Product deleted", res);
+        this.router.navigateByUrl("/products/list");
       },
       err => {
         console.error("Error deleting product", err);
