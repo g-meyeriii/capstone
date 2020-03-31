@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http/http';
+import { HttpClient } from '@angular/common/http';
 import { Request } from './request.class';  
 
 const url: string = "http://localhost:58145/api/requests";

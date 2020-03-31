@@ -35,7 +35,6 @@ export class UserEditComponent implements OnInit {
       res => {
         this.user = res;
         console.debug("User edited:",res);
-        this.router.navigateByUrl("/users/list");
       },
       err => {
         console.error("Error editing user");

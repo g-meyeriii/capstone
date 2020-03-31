@@ -7,6 +7,7 @@ import { User } from './user.class';
 export class UserSearchPipe implements PipeTransform {
 
   transform(users: User[], searchCriteria: string =" "): User [] {
+    if(searchCriteria === " ") return users;
     let criteria = searchCriteria.toLowerCase();
     let selUsers: User [] =[];
     for(let user of users){
@@ -15,8 +16,8 @@ export class UserSearchPipe implements PipeTransform {
        || (user.lastName.toLowerCase().includes(criteria))
        || (user.userName.toLowerCase().includes(criteria))
        || (user.password.toLowerCase().includes(criteria))
-       || (user.phone.includes(criteria))
-       || (user.email.toLowerCase().includes(criteria))
+       || (user.phone != null && user.phone.toString().includes(criteria))
+       || (user.email != null && user.email.toLowerCase().includes(criteria))
        || (user.isReviewer.valueOf().toString().includes(criteria))
        || (user.isAdmin.valueOf().toString().includes(criteria))
       ) {

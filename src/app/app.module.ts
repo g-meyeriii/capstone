@@ -35,6 +35,12 @@ import { RequestSearchPipe } from './request/request-search.pipe';
 import { MenuitemComponent } from './menu/menuitem/menuitem.component';
 import { MenuComponent } from './menu/menu/menu.component';
 import { SortPipe } from './pipes/sort.pipe';
+import { RequestToReviewComponent } from './request/request-to-review/request-to-review.component';
+import { DisapprovedComponent } from './request/set-to-approved/disapproved/disapproved.component';
+import { RequesListReviewedOnlyComponent } from './request/reques-list-reviewed-only/reques-list-reviewed-only.component';
+import { RequestListLinesComponent } from './request/request-list-lines/request-list-lines.component';
+import { RequestTotalChangeComponent } from './request/request-total-change/request-total-change.component';
+import { UserLoginComponent } from './user/user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +73,13 @@ import { SortPipe } from './pipes/sort.pipe';
     RequestSearchPipe,
     MenuitemComponent,
     MenuComponent,
-    SortPipe
+    SortPipe,
+    RequestToReviewComponent,
+    DisapprovedComponent,
+    RequesListReviewedOnlyComponent,
+    RequestListLinesComponent,
+    RequestTotalChangeComponent,
+    UserLoginComponent
   ],
   imports: [
     BrowserModule,

@@ -17,7 +17,7 @@ export class ProductSearchPipe implements PipeTransform {
       || product.name.toLowerCase().includes(criteria)
       || product.price.toString().includes(criteria)
       || product.unit.toLowerCase().includes(criteria)
-      || product.photoPath.toLowerCase().includes(criteria)
+      || product.photoPath != null && product.photoPath.toLowerCase().includes(criteria)
       || product.vendorId.toString().includes(criteria)
        ) {
         selProducts.push(product);

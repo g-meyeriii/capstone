@@ -20,8 +20,8 @@ export class VendorSearchPipe implements PipeTransform {
        || (vendor.address.toLowerCase().includes(criteria))
        || (vendor.city.toLowerCase().includes(criteria))
        || (vendor.state.toLowerCase().includes(criteria))
-       || (vendor.phone.toLowerCase().includes(criteria))
-       || (vendor.email.toLowerCase().includes(criteria))
+       || (vendor.phone !=null && vendor.phone.includes(criteria))
+       || (vendor.email !=null && vendor.email.toLowerCase().includes(criteria))
       ) {
         selVendors.push(vendor);
         }

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserLoginComponent } from './user/user-login/user-login.component';
 import { UserListComponent } from './user/user-list/user-list.component';
 import { UserDetailComponent } from './user/user-detail/user-detail.component';
 import { UserCreateComponent } from './user/user-create/user-create.component';
@@ -28,7 +29,8 @@ import { RequestLineEditComponent } from './request-line/request-line-edit/reque
 
 const routes: Routes = [
   {path: "",redirectTo:"/users/list", pathMatch: "full"},
-  
+
+  {path: "users/login", component:UserLoginComponent},
   {path: "users/list", component: UserListComponent},
   {path: "users/detail/:id", component: UserDetailComponent},
   {path: "users/create", component: UserCreateComponent},

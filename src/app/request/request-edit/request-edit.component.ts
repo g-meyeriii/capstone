@@ -17,7 +17,7 @@ export class RequestEditComponent implements OnInit {
       res => {
         this.request = res;
         console.debug("Request edited", res);
-        this.router.navigateByUrl("/request/list");
+        this.router.navigateByUrl("/requests/list");
       },
       err => {
         console.error("Error editing request", err);

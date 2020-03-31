@@ -1,0 +1,23 @@
+<h1>User Login</h1>
+
+<div class="component">
+    <table class="table table-sm">
+    <tr>
+        <td>UserName</td>
+        <td><input [(ngModel)]="user.userName" type="text" size="15"></td>
+    </tr>
+    <tr>
+        <td>Password</td>
+        <td><input [(ngModel)]="user.password" type="password" size="15"></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button (click)="check()" class="btn btn-primary">Login</button>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">{{message}}</td>
+
+    </tr>
+    </table>
+</div>

@@ -1,1 +1,35 @@
-<p>request-line-edit works!</p>
+<p>Request Line Edit</p>
+<app-menu></app-menu>
+<div class= "component">
+
+    <table call="table table-striped table-sm">
+        <tr>
+            <th>Id</th>
+            <td>
+                <input [(ngModel)]="requestLine.id" type ="number" size = "10"disabled>
+            </td>
+            
+        </tr>
+        <tr>
+            <th>RequestId</th>
+            <td>
+                <input [(ngModel)]="requestLine.requestId" type ="number" size = "10">
+            </td>
+        </tr>
+        <tr>
+            <th>ProductId</th>
+            <td>
+                <input [(ngModel)]="requestLine.productId" type ="number" size = "10">
+            </td>
+        </tr>
+        <tr>
+            <th>Quantity:</th>
+            <td>
+                <input [(ngModel)]="requestLine.quantity" type ="number" size = "10">
+            </td>
+        </tr>
+        <td colspan="2">
+            <button (click)="save()" class= "btn btn-primary">Save</button>
+        </td>
+    </table>
+</div>

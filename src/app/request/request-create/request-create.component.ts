@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { RequestService } from '../request.service';
+import { Request } from '../request.class';
 
 @Component({
   selector: 'app-request-create',
@@ -7,7 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequestCreateComponent implements OnInit {
 
-  constructor() { }
+  request: Request = new Request();
+
+  save(): void {
+    this.requestsvc.create(this.request).subscribe(
+      res => {
+        this.request =res;
+        console.debug("Request created",res);
+        this.router.navigateByUrl("/requests/list");
+      },
+      err => {
+        console.error("Error creating request", err);
+      }
+    );
+  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private requestsvc: RequestService
+  ) { }
 
   ngOnInit(): void {
   }

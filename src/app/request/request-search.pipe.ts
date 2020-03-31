@@ -13,11 +13,11 @@ export class RequestSearchPipe implements PipeTransform {
     for(let request of requests){
       if(
       request.id.toString().includes(criteria)
-      ||request.description.toLowerCase().includes(criteria)
-      ||request.rejectionReason.toLowerCase().includes(criteria)
+      ||request.description !=null && request.description .toLowerCase().includes(criteria)
+      ||request.rejectionReason !=null && request.rejectionReason.toLowerCase().includes(criteria)
       ||request.deliveryMode.toLowerCase().includes(criteria)
       ||request.status.toLowerCase().includes(criteria)
-      ||request.total.toString().includes(criteria)
+      ||request.total !=null && request.total.toString().includes(criteria)
       ||request.userId.toString().includes(criteria)
       ){
       selRequests.push(request);
