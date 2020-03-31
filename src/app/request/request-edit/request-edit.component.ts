@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../request.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Request } from '../request.class';
 
 @Component({
   selector: 'app-request-edit',

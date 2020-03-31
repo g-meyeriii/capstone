@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http/http';
-import { Request } from './request.class';
+import { Request } from './request.class';  
 
-const url ="http://localhost:58145/api/products";
+const url: string = "http://localhost:58145/api/requests";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' 
 })
 export class RequestService {
   list(): Observable<Request[]> {
