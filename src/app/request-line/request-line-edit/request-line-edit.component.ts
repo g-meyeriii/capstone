@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestLine } from '../request-line.class';
 import { RequestLineService } from '../request-line.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SystemService } from 'src/app/system/system.service';
 
 @Component({
   selector: 'app-request-line-edit',
@@ -28,7 +29,8 @@ export class RequestLineEditComponent implements OnInit {
   constructor(
     private router: Router,
     private requestLinesvc: RequestLineService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private systemsvc: SystemService
   ) { }
 
   ngOnInit(): void {

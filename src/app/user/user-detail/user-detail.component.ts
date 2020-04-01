@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../user.class';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../user.service';
+import { SystemService } from 'src/app/system/system.service';
 
 @Component({
   selector: 'app-user-detail',
@@ -26,7 +27,8 @@ export class UserDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private usersvc: UserService,
-    private router: Router
+    private router: Router,
+    private systemsvc: SystemService
   ) { }
 
   ngOnInit(): void {

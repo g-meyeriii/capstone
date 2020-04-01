@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../request.service';
 import { Request } from '../request.class';
+import { SystemService } from 'src/app/system/system.service';
 
 
 @Component({
@@ -13,7 +14,8 @@ export class RequestListComponent implements OnInit {
   searchCriteria: string ="";
 
   constructor(
-    private request: RequestService
+    private request: RequestService,
+    private systemsvc: SystemService
   ) { }
 
   ngOnInit(): void {

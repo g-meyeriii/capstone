@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from '../request.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Request } from '../request.class';
+import { SystemService } from 'src/app/system/system.service';
 
 @Component({
   selector: 'app-request-edit',
@@ -28,7 +29,8 @@ export class RequestEditComponent implements OnInit {
   constructor(
     private requestsvc: RequestService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private systemsvc: SystemService
   ) { }
 
   ngOnInit(): void {

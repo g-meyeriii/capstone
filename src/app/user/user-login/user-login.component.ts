@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../user.class';
 import { UserService } from '../user.service';
+import { Router } from '@angular/router';
+import { SystemService } from 'src/app/system/system.service';
 
 @Component({
   selector: 'app-user-login',
@@ -9,23 +11,30 @@ import { UserService } from '../user.service';
 })
 export class UserLoginComponent implements OnInit {
   user: User = new User();
-  message: string ="";
+  message: string ="Login Ready";
 
-  Check(): void{
-    this.usersvc.userLogin(this.user.userName, this.user.password).subscribe(
+  login(): void{
+    this.usersvc.login(this.user.userName, this.user.password).subscribe(
       res => { this.user =res;
-      this.message = this.user.userName;
+      
+      this.systemsvc.currentUser=this.user;
       console.debug("User:", res);
+      this.router.navigateByUrl("/request/list");
+
     },
     err => {
       this.message = "Username/Password not found"
-      console.debug("Error loggin in:", err);
+      console.debug("Error logging in:", err);
+      this.router.navigateByUrl("/users/login");
     }
     );
   }
 
   constructor(
-    private usersvc: UserService
+    private systemsvc: SystemService,
+    private usersvc: UserService,
+    private router: Router
+   
   ) { }
 
   ngOnInit(): void {

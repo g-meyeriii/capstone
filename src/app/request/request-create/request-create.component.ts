@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { RequestService } from '../request.service';
 import { Request } from '../request.class';
+import { SystemService } from 'src/app/system/system.service';
 
 @Component({
   selector: 'app-request-create',
@@ -27,7 +28,8 @@ export class RequestCreateComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private requestsvc: RequestService
+    private requestsvc: RequestService,
+    private systemsvc: SystemService
   ) { }
 
   ngOnInit(): void {

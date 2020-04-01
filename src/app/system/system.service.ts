@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
+import { User } from '../user/user.class';
 
 
 @Injectable({
@@ -9,12 +8,11 @@ import { Observable } from 'rxjs';
 })
 export class SystemService {
 
-  userLogin(userName:string, password: string){
-    return this.http.get(`${url}/userName/
-            ${userName}` && `${url}/password/${password}`) as Observable<any>;
-  }
+  currentUser : User =null;
+
 
   constructor(
-    private http: HttpClient
-  ) { }
+    private http: HttpClient 
+    
+    ) { }
 }

@@ -14,11 +14,11 @@
             <th>Quantity</th>
             <th>Actions</th>
         </tr>
-        <tr *ngFor="let rl of request.requestlines |  sort:'id'">
+        <tr *ngFor="let rl of requestLines |  sort:'id'">
             <td>{{rl.product.name}}</td>
             <td>{{rl.quantity}}</td>
             <td>{{rl.product.price}}</td>
-            <td>{{rl.product.product*line.quantity | currency}}</td>
+            <td>{{rl.product.price*rl.quantity | currency}}</td>
             <td>
                 <a routerLink="/requestlines/detail/{{rl.id}}">Detail</a> |
                 <a routerLink="/requestlines/edit/{{rl.id}}">Edit</a>

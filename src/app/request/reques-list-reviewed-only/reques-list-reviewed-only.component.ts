@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SystemService } from 'src/app/system/system.service';
 
 @Component({
   selector: 'app-reques-list-reviewed-only',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RequesListReviewedOnlyComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private systemsvc: SystemService
+  ) { }
 
   ngOnInit(): void {
   }

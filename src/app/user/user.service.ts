@@ -10,9 +10,8 @@ const url: string ="http://localhost:58145/api/users";
 })
 export class UserService {
 
-  userLogin(userName:string, password: string){
-    return this.http.get(`${url}/userName/
-            ${userName}` && `${url}/password/${password}`) as Observable<any>;
+  login(userName:string, password: string){
+    return this.http.get(`${url}/login/${userName}/${password}`) as Observable<any>;
   }
 
   

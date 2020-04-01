@@ -3,12 +3,29 @@ import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Request } from './request.class';  
 
+
 const url: string = "http://localhost:58145/api/requests";
 
 @Injectable({
   providedIn: 'root' 
 })
 export class RequestService {
+  login(userName:string, password: string){
+    return this.http.get(`${url}/login/${userName}/${password}`) as Observable<any>;
+  }
+
+  requestsToReviewNotOwned(userId:number){
+    return this.http.get(`${url}/getrequeststoreview/${userId}`)as Observable<Request>;
+  }
+  setToReview(request:Request): Observable<Request>{
+    return this.http.put(`${url}/settoreview/${request.id}`,request) as Observable<any>;
+  }
+  setToApproved(request: Request): Observable<Request>{
+    return this.http.put(`${url}/settoapproved/${request.id}`,request) as Observable<any>;
+  }
+  setToRejected(request: Request): Observable<Request>{
+    return this.http.put(`${url}/settorejected/${request.id}`,request) as Observable<any>;
+  }
   list(): Observable<Request[]> {
     return this.http.get(`${url}`) as Observable<Request[]>;
   }
