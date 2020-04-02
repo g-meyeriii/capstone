@@ -25,6 +25,18 @@ export class RequestCreateComponent implements OnInit {
       }
     );
   }
+  setToReview(): void{
+    this.requestsvc.setToReview(this.request).subscribe(
+      res => {
+        this.request =res;
+        console.debug("Request:",res);
+        this.router.navigateByUrl("/requests/detail");
+      },
+      err => {
+        console.debug("Error sending to review",err);
+      }
+    );
+  }
   constructor(
     private route: ActivatedRoute,
     private router: Router,

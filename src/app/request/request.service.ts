@@ -10,9 +10,7 @@ const url: string = "http://localhost:58145/api/requests";
   providedIn: 'root' 
 })
 export class RequestService {
-  login(userName:string, password: string){
-    return this.http.get(`${url}/login/${userName}/${password}`) as Observable<any>;
-  }
+  
 
   requestsToReviewNotOwned(userId:number){
     return this.http.get(`${url}/getrequeststoreview/${userId}`)as Observable<Request>;
