@@ -8,7 +8,9 @@ import { User } from '../user/user.class';
 })
 export class SystemService {
 
-  currentUser : User =null;
+  
+ 
+  currentUser: User;
 
 
   constructor(

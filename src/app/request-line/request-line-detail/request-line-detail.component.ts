@@ -3,6 +3,8 @@ import { SystemService } from 'src/app/system/system.service';
 import { RequestLine } from '../request-line.class';
 import { Router } from '@angular/router';
 import { RequestLineService } from '../request-line.service';
+import { User } from 'src/app/user/user.class';
+import { RequestService } from 'src/app/request/request.service';
 
 @Component({
   selector: 'app-request-line-detail',
@@ -11,10 +13,12 @@ import { RequestLineService } from '../request-line.service';
 })
 export class RequestLineDetailComponent implements OnInit {
   requestLine: RequestLine = new RequestLine();
+  request: Request;
   searchCriteria: string="";
+  currentUser: User = this.systemsvc.currentUser;
 
   delete(): void{
-    this.requestLinesvc.remove(this.requestLine).subscribe(
+    this.requestLinesvc.DeleteRequestLine(this.requestLine).subscribe(
       res=> {
         console.debug("Requestline delete successfull!", res);
         this.router.navigateByUrl("/requestlines/list");
@@ -24,11 +28,12 @@ export class RequestLineDetailComponent implements OnInit {
       }
     );
   }
-
+ 
   constructor(
     private systemsvc: SystemService,
     private router: Router,
-    private requestLinesvc: RequestLineService
+    private requestLinesvc: RequestLineService,
+    private requestsvc: RequestService
   ) { }
 
   ngOnInit(): void {

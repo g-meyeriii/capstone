@@ -37,9 +37,9 @@ import { MenuComponent } from './menu/menu/menu.component';
 import { SortPipe } from './pipes/sort.pipe';
 import { RequestToReviewComponent } from './request/request-to-review/request-to-review.component';
 import { DisapprovedComponent } from './request/set-to-approved/disapproved/disapproved.component';
-import { RequesListReviewedOnlyComponent } from './request/reques-list-reviewed-only/reques-list-reviewed-only.component';
+import { RequestListReviewedOnlyComponent } from './request/request-list-reviewed-only/request-list-reviewed-only.component';
 import { RequestListLinesComponent } from './request/request-list-lines/request-list-lines.component';
-import { RequestTotalChangeComponent } from './request/request-total-change/request-total-change.component';
+import { RequestTotalChangeComponent } from './request-line/request-total-change/request-total-change.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { SystemService } from './system/system.service';
 
@@ -77,7 +77,7 @@ import { SystemService } from './system/system.service';
     SortPipe,
     RequestToReviewComponent,
     DisapprovedComponent,
-    RequesListReviewedOnlyComponent,
+    RequestListReviewedOnlyComponent,
     RequestListLinesComponent,
     RequestTotalChangeComponent,
     UserLoginComponent

@@ -10,13 +10,12 @@ const url: string = "http://localhost:58145/api/requests";
   providedIn: 'root' 
 })
 export class RequestService {
-  
 
   requestsToReviewNotOwned(userId:number){
-    return this.http.get(`${url}/getrequeststoreview/${userId}`)as Observable<Request>;
+    return this.http.get(`${url}/getrequeststoreview/${userId}`)as Observable<Request[]>;
   }
-  setToReview(request:Request): Observable<Request>{
-    return this.http.put(`${url}/settoreview/${request.id}`,request) as Observable<any>;
+  setToReview(request:Request): Observable<Request[]>{
+    return this.http.put(`${url}/settoreview/${request.id}`,request) as Observable<any[]>;
   }
   setToApproved(request: Request): Observable<Request>{
     return this.http.put(`${url}/settoapproved/${request.id}`,request) as Observable<any>;

@@ -2,25 +2,48 @@
 <nav class="navbar navbar-inverse">
     <app-menu></app-menu>
 </nav>
-
-<a routerLink="/requestlines/create">Create</a> |
-<input [(ngModel)]="searchCriteria" type="text" placeholder="Search">
 <div class ="component">
     <table class="table table-sm">
         <tr>
             <th>Id</th>
-            <th>RequestId</th>
-            <th>ProductId</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>UserId</th>
+        </tr>
+        <tr *ngIf="request">
+            <td>{{request.id}}</td>
+            <td>{{request.description}}</td>
+            <td>{{request.status}}</td>
+            <td>{{request.total |currency}}</td>
+            <td>{{request.user.userName}}</td>
+        </tr>
+        
+    </table>
+</div>
+
+
+<a routerLink="/requestlines/create">Create</a> |
+<input [(ngModel)]="searchCriteria" type="text" placeholder="Search">
+<div class ="component">
+    <table class="table table-sm" *ngIf="request">
+        <tr>
+            <th>Id</th>
+            <th>Product</th>
             <th>Quantity</th>
+            <th>Price</th>
+            <th>LineTotal</th>
             <th>Actions</th>
         </tr>
-        <tr *ngFor="let rl of requestLines |  sort:'id'">
-            <td>{{rl.product.name}}</td>
+        <tr *ngFor="let rl of request.requestLines |  sort:'id'">
+            
+            <td>{{rl.id}}</td>
+            <td *ngIf="rl.product">{{rl.product.name}}</td>
             <td>{{rl.quantity}}</td>
-            <td>{{rl.product.price}}</td>
+            <td>{{rl.product.price | currency}}</td>
             <td>{{rl.product.price*rl.quantity | currency}}</td>
             <td>
-                <a routerLink="/requestlines/detail/{{rl.id}}">Detail</a> |
+                <a routerLink="/requestlines/delete/{{rl.id}}">Delete</a> |
                 <a routerLink="/requestlines/edit/{{rl.id}}">Edit</a>
 
             </td>

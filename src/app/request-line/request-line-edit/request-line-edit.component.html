@@ -3,23 +3,13 @@
 <div class= "component">
 
     <table call="table table-striped table-sm">
+    
         <tr>
-            <th>Id</th>
+            <th>Product</th>
             <td>
-                <input [(ngModel)]="requestLine.id" type ="number" size = "10"disabled>
-            </td>
-            
-        </tr>
-        <tr>
-            <th>RequestId</th>
-            <td>
-                <input [(ngModel)]="requestLine.requestId" type ="number" size = "10">
-            </td>
-        </tr>
-        <tr>
-            <th>ProductId</th>
-            <td>
-                <input [(ngModel)]="requestLine.productId" type ="number" size = "10">
+                <input [(ngModel)]="requestLine.product.name" type ="text" size = "10">
+                    
+                
             </td>
         </tr>
         <tr>

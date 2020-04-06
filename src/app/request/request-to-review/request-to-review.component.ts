@@ -3,6 +3,7 @@ import { SystemService } from 'src/app/system/system.service';
 import { RequestService } from '../request.service';
 import { Router } from '@angular/router';
 import { Request } from '../request.class';
+import { User } from 'src/app/user/user.class';
 
 @Component({
   selector: 'app-request-to-review',
@@ -10,13 +11,14 @@ import { Request } from '../request.class';
   styleUrls: ['./request-to-review.component.css']
 })
 export class RequestToReviewComponent implements OnInit {
-
-  request: Request = new Request();
+  requests: Request[]= [];
+  currentUser: User = this.systemsvc.currentUser
+ 
 
   RequestsToReviewNotOwned(){
-    this.requestsvc.requestsToReviewNotOwned(this.request.userId).subscribe(
+    this.requestsvc.requestsToReviewNotOwned(this.currentUser.id).subscribe(
       res => {
-        this.request =res;
+        this.requests =res;
         console.debug("Requests not owned", res);
         this.router.navigateByUrl("/request/list");
       },
@@ -26,33 +28,6 @@ export class RequestToReviewComponent implements OnInit {
       }
     );
   }
-  setToApproved(){
-    this.requestsvc.setToApproved(this.request).subscribe(
-      res => {
-        this.request =res;
-        console.debug("Request approved",res);
-        this.router.navigateByUrl("/request/list");
-      },
-      err => {
-        console.error("Error request not approved")
-        this.router.navigateByUrl("/request/list");
-      }
-    );
-  }
-  setToRejected(){
-    this.requestsvc.setToRejected(this.request).subscribe(
-      res => {
-        this.request =res;
-        console.debug("Request rejected",res);
-        this.router.navigateByUrl("/request/list");
-      },
-      err => {
-        console.error("Error rejection failed")
-        this.router.navigateByUrl("/request/list");
-      }
-    );
-  }
-
   constructor(
     private systemsvc: SystemService,
     private requestsvc: RequestService,
@@ -60,6 +35,7 @@ export class RequestToReviewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+   
   }
 
 }
