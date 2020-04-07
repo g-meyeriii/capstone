@@ -11,8 +11,8 @@ import { Request } from '../../request.class';
 })
 export class DisapprovedComponent implements OnInit {
 
-  request: Request
-
+  requests: Request [] =[];
+  currentUser = this.systemsvc.currentUser.id
   
 
   constructor(
@@ -23,6 +23,16 @@ export class DisapprovedComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.requestsvc.requestsToReviewNotOwned(this.currentUser).subscribe(
+      res => {
+        this.requests = res;
+        console.debug("Set to review",res);
+      },
+      err => {
+        console.error("Error set to reivew:", err);
+      }
+    );
+
   }
 
 }

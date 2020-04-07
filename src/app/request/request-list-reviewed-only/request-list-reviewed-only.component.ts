@@ -13,7 +13,7 @@ import { Request } from '../request.class';
 export class RequestListReviewedOnlyComponent implements OnInit {
   requests: Request[];
   searchCriteria: string ="";
-  currentUser: User = this.systemsvc.currentUser
+  currentUser = this.systemsvc.currentUser.id;
 
   
  
@@ -25,7 +25,8 @@ export class RequestListReviewedOnlyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.requestsvc.requestsToReviewNotOwned(this.currentUser.id).subscribe(
+    
+    this.requestsvc.requestsToReviewNotOwned(this.currentUser).subscribe(
       res => {
         this.requests =res;
       console.debug("Requets-to-review-list", res);

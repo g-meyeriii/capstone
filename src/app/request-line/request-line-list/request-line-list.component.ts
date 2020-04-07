@@ -17,20 +17,16 @@ export class RequestLineListComponent implements OnInit {
   searchCriteria: string="";
   request: Request;
   
-  
-
-  
   constructor(
     private systemsvc: SystemService,
     private route: ActivatedRoute,
     private requestLinesvc: RequestLineService,
     private requestsvc: RequestService,
-    
-    
   ) { }
 
   ngOnInit(): any {
     let id = this.route.snapshot.params.id;
+    
     this.requestsvc.get(id).subscribe(
       res => {
         this.request =res;
@@ -41,6 +37,7 @@ export class RequestLineListComponent implements OnInit {
         console.error(err);
       }
     );
+    
 
   }
   

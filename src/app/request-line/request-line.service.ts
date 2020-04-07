@@ -16,11 +16,15 @@ export class RequestLineService {
     return this.http.put(`${url}/settoapproved/${requestLine.id}`,requestLine) as Observable<any>;
   }
 
-  RecalcRequestTotal(requestId): void {
+  RecalcRequestTotal(requestId): any {
     
   }
   list(): Observable<RequestLine[]>{
     return this.http.get(`${url}`) as Observable<RequestLine[]>;
+  }
+  change(requestLine: RequestLine): Observable<RequestLine>{
+    console.debug("Requestline",requestLine);
+    return this.http.put(`${url}/${requestLine.id}`, requestLine) as Observable <RequestLine>
   }
  
   GetRequestLine(id:any): Observable<RequestLine>{

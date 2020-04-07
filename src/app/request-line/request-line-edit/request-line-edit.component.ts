@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { SystemService } from 'src/app/system/system.service';
 import { Product } from 'src/app/product/product.class';
 import { ProductService } from 'src/app/product/product.service';
+import { RequestService } from 'src/app/request/request.service';
 
 @Component({
   selector: 'app-request-line-edit',
@@ -18,12 +19,13 @@ export class RequestLineEditComponent implements OnInit {
 
 
   save(): void{
-    this.requestLinesvc.PutRequestLine(this.requestLine, this.requestLine).subscribe(
+    
+    this.requestLinesvc.change(this.requestLine).subscribe(
       res => {
         this.requestLine = res;
         console.debug("RequestLine edited", res);
-        this.requestLinesvc.RecalcRequestTotal(this.requestLine.requestId)
-        this.router.navigateByUrl("/requestlines/list/:id");
+        
+        this.router.navigateByUrl("/requests/list");
       },
       err => {
         console.error("Error editing request line", err);
@@ -36,20 +38,26 @@ export class RequestLineEditComponent implements OnInit {
     private requestLinesvc: RequestLineService,
     private route: ActivatedRoute,
     private systemsvc: SystemService,
-    private prodsvc: ProductService
+    private prodsvc: ProductService,
+    private requestsvc: RequestService
   ) { }
 
   ngOnInit(): void {
     this.prodsvc.list().subscribe(
-      res => { this.products = res; console.debug("Products:", res); }
+      res => { this.products = res; console.debug("Products:", res);
+     },
+     err =>{
+       console.error("RequestLine edit failed:",err);
+     }
     );
-    this.requestLinesvc.GetRequestLine(this.requestLine.id).subscribe(
+    let id = this.route.snapshot.params.id;
+    this.requestLinesvc.GetRequestLine(id).subscribe(
       res => {
         this.requestLine =res;
-        console.debug("Requestline:",res);
+        console.debug("RequestLine:", res);
       },
       err => {
-        console.error(err);
+        console.error("Error editing RequestLine:", err);
       }
     );
   }
