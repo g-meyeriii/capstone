@@ -33,9 +33,7 @@ export class RequestLineService {
   PostReqeustLine(requestLine: RequestLine): Observable<RequestLine>{
     return this.http.post(`${url}`,requestLine) as Observable<any>;
   }
-  PutRequestLine(id:any, requestLine: RequestLine): Observable<any>{
-    return this.http.put(`${url}/id/${id}`, requestLine) as Observable<any>;
-  }
+  
   DeleteRequestLine(requestLine: RequestLine): Observable<any>{
     return this.http.delete(`${url}/id/${requestLine.id}`) as Observable<any>;
   }

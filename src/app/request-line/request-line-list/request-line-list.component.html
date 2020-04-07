@@ -23,7 +23,7 @@
 </div>
 
 
-<a routerLink="/requestlines/create">Create</a> |
+<a *ngIf="request" routerLink="/requestlines/create/{{request.id}}">Create</a> |
 <input [(ngModel)]="searchCriteria" type="text" placeholder="Search">
 <div class ="component">
     <table class="table table-sm" *ngIf="request">
