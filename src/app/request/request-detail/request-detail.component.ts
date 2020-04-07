@@ -14,6 +14,8 @@ export class RequestDetailComponent implements OnInit {
   request: Request  = new Request();
   searchCriteria: string ='';
 
+  
+
   delete(): void{
     this.requestsvc.remove(this.request).subscribe(
       res => {

@@ -14,9 +14,32 @@ export class RequestListReviewedOnlyComponent implements OnInit {
   requests: Request[];
   searchCriteria: string ="";
   currentUser = this.systemsvc.currentUser.id;
+  request: Request;
 
-  
- 
+  approved():void{
+    this.systemsvc.currentUser.isReviewer=true;
+    this.requestsvc.setToApproved(this.request).subscribe(
+      res => {
+        this.request = res;
+      },
+      err => {
+        console.error("Error approving Request:",err);
+      }
+    );
+
+  }
+  rejected():void{
+    this.systemsvc.currentUser.isReviewer=true;
+    this.requestsvc.setToRejected(this.request).subscribe(
+      res => {
+        this.request = res;
+      },
+      err => {
+        console.error("Error rejecting Request:",err);
+      }
+    );
+
+  }
   constructor(
     private systemsvc: SystemService,
     private router: Router,
@@ -35,6 +58,5 @@ export class RequestListReviewedOnlyComponent implements OnInit {
         console.error(err);
       }
     );
-  
   }
 }

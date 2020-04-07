@@ -11,6 +11,10 @@ const url: string ="http://localhost:58145/api/requestlines";
 }) 
 export class RequestLineService {
   requestLine: RequestLine;
+
+  requestsToReviewNotOwned(userId:number){
+    return this.http.get(`${url}/getrequeststoreview/${userId}`)as Observable<Request[]>;
+  }
   
   setToApproved(requestLine: RequestLine): Observable<Request>{
     return this.http.put(`${url}/settoapproved/${requestLine.id}`,requestLine) as Observable<any>;
