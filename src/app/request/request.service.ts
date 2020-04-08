@@ -16,13 +16,13 @@ export class RequestService {
   }
   setToReview(request:Request): Observable<Request>{
     console.log(request);
-    return this.http.put(`${url}/settoreview/${request}`,request) as Observable<any>;
+    return this.http.put(`${url}/${request}`,request) as Observable<any>;
   }
   setToApproved(request: Request): Observable<Request>{
-    return this.http.put(`${url}/settoapproved/${request.id}`,request) as Observable<any>;
+    return this.http.put(`${url}/${request.id}`,request) as Observable<any>;
   }
   setToRejected(request: Request): Observable<Request>{
-    return this.http.put(`${url}/settorejected/${request.id}`,request) as Observable<any>;
+    return this.http.put(`${url}/${request.id}`,request) as Observable<any>;
   }
   list(): Observable<Request[]> {
     return this.http.get(`${url}`) as Observable<Request[]>;

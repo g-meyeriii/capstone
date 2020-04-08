@@ -46,7 +46,8 @@
             <td>{{rl.quantity}}</td>
             <td>{{rl.product.price | currency}}</td>
             <td>{{rl.product.price*rl.quantity | currency}}</td>
-            <td>
+            
+            <td> 
                 <a routerLink="/requestlines/delete/{{rl.id}}">Delete</a> |
                 <a routerLink="/requestlines/edit/{{rl.id}}">Edit</a>
 

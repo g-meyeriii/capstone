@@ -17,17 +17,7 @@ export class RequestLineDetailComponent implements OnInit {
   searchCriteria: string="";
   currentUser: User = this.systemsvc.currentUser;
 
-  delete(): void{
-    this.requestLinesvc.DeleteRequestLine(this.requestLine).subscribe(
-      res=> {
-        console.debug("Requestline delete successfull!", res);
-        this.router.navigateByUrl("/requestlines/list");
-      },
-      err => {
-        console.error("Error requestline delete failed",err);
-      }
-    );
-  }
+  
  
   constructor(
     private systemsvc: SystemService,

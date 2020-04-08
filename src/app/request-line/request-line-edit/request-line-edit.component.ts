@@ -17,15 +17,15 @@ export class RequestLineEditComponent implements OnInit {
   requestLine: RequestLine = new RequestLine();
   products: Product[] = [];
 
-
+  
   save(): void{
-    
+       
     this.requestLinesvc.change(this.requestLine).subscribe(
       res => {
-        this.requestLine = res;
+       
         console.debug("RequestLine edited", res);
         
-        this.router.navigateByUrl("/requests/list");
+        this.router.navigateByUrl(`/requestlines/list/${this.requestLine.requestId}`);
       },
       err => {
         console.error("Error editing request line", err);

@@ -42,6 +42,7 @@ import { RequestListLinesComponent } from './request/request-list-lines/request-
 import { RequestTotalChangeComponent } from './request-line/request-total-change/request-total-change.component';
 import { UserLoginComponent } from './user/user-login/user-login.component';
 import { SystemService } from './system/system.service';
+import { RequestLineDeleteComponent } from './request-line/request-line-delete/request-line-delete.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { SystemService } from './system/system.service';
     RequestListReviewedOnlyComponent,
     RequestListLinesComponent,
     RequestTotalChangeComponent,
-    UserLoginComponent
+    UserLoginComponent,
+    RequestLineDeleteComponent
   ],
   imports: [
     BrowserModule,

@@ -52,7 +52,7 @@ export class RequestListReviewedOnlyComponent implements OnInit {
     this.requestsvc.requestsToReviewNotOwned(this.currentUser).subscribe(
       res => {
         this.requests =res;
-      console.debug("Requets-to-review-list", res);
+      console.debug("Requests-to-review-list", res);
       },
       err => {
         console.error(err);
