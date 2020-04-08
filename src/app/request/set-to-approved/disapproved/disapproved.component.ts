@@ -11,9 +11,8 @@ import { Request } from '../../request.class';
 })
 export class DisapprovedComponent implements OnInit {
 
-  requests: Request [] =[];
-  currentUser = this.systemsvc.currentUser.id
-  
+  request: Request;
+  requestId: number = 0;
 
   constructor(
     private systemsvc: SystemService,
@@ -22,17 +21,41 @@ export class DisapprovedComponent implements OnInit {
     private route: ActivatedRoute
   ) { }
 
-  ngOnInit(): void {
-    this.requestsvc.requestsToReviewNotOwned(this.currentUser).subscribe(
+  approved(request: Request):void{
+    this.requestsvc.setToApproved(request).subscribe(
       res => {
-        this.requests = res;
-        console.debug("Set to review",res);
+      
+      console.debug("Set to approved:",res);
+      this.router.navigateByUrl("/requests/requestreviewonly")
       },
       err => {
-        console.error("Error set to reivew:", err);
+        console.error("Error approving Request:",err);
       }
     );
-
+  }
+  rejected(request: Request):void{
+   
+    this.requestsvc.setToRejected(request).subscribe(
+      res => {
+        this.request = res;
+        this.router.navigateByUrl("/requests/requestreviewonly")
+      },
+      err => {
+        console.error("Error rejecting Request:",err);
+      }
+    );
   }
 
+  ngOnInit(): void {
+    this.requestId= this.route.snapshot.params.id; 
+    this.requestsvc.get(this.requestId).subscribe(
+      res => {
+        this.request = res;
+        console.debug("Approve/Reject view",res);
+      },
+      err => {
+        console.error("Error Approve/Reject view:", err);
+      }
+    );
+  }
 }

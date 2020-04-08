@@ -1,1 +1,59 @@
 <p>Approve/Disapprove</p>
+
+<nav class="navbar navbar-inverse">
+    <app-menu></app-menu>
+</nav>
+<div class ="component">
+    <table class="table table-sm">
+        <tr>
+            <th>Id</th>
+            <th>Description</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>UserId</th>
+        </tr>
+        <tr *ngIf="request">
+            <td>{{request.id}}</td>
+            <td>{{request.description}}</td>
+            <td>{{request.status}}</td>
+            <td>{{request.total |currency}}</td>
+            <td>{{request.user.userName}}</td>
+
+            <td colspan="2">
+                <button (click)="approved(request)" class="btn btn-primary">Approved</button>
+            </td>
+            <td colspan="2"><input size=20 placeholder="Rejection reason">
+                <button (click)="rejected(request)" class="btn btn-primary">Rejected</button>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+
+<div class ="component">
+    <table class="table table-sm" *ngIf="request">
+        <tr>
+            <th>Id</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>LineTotal</th>
+            
+        </tr>
+        <tr *ngFor="let rl of request.requestLines |  sort:'id'">
+            
+            <td>{{rl.id}}</td>
+            <td *ngIf="rl.product">{{rl.product.name}}</td>
+            <td>{{rl.quantity}}</td>
+            <td>{{rl.product.price | currency}}</td>
+            <td>{{rl.product.price*rl.quantity | currency}}</td>
+            
+            
+            
+
+        </tr>
+        
+    </table>
+</div>
+
+

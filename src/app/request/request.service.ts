@@ -14,13 +14,13 @@ export class RequestService {
   requestsToReviewNotOwned(userId:number){
     return this.http.get(`${url}/getrequeststoreview/${userId}`)as Observable<Request[]>;
   }
-  setToReview(request:Request): Observable<Request>{
+  setToReview(request:Request): Observable<any>{
     return this.http.put(`${url}/settoreview`,request) as Observable<any>;
   }
-  setToApproved(request: Request): Observable<Request>{
+  setToApproved(request: Request): Observable<any>{
     return this.http.put(`${url}/settoapproved`,request) as Observable<any>;
   }
-  setToRejected(request: Request): Observable<Request>{
+  setToRejected(request: Request): Observable<any>{
     return this.http.put(`${url}/settorejected`,request) as Observable<any>;
   }
   list(): Observable<Request[]> {

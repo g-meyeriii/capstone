@@ -21,6 +21,7 @@ import { RequestDetailComponent } from './request/request-detail/request-detail.
 import { RequestCreateComponent } from './request/request-create/request-create.component';
 import { RequestEditComponent } from './request/request-edit/request-edit.component';
 import { RequestListReviewedOnlyComponent } from './request/request-list-reviewed-only/request-list-reviewed-only.component';
+import { DisapprovedComponent } from './request/set-to-approved/disapproved/disapproved.component';
 
 
 import { RequestLineListComponent } from './request-line/request-line-list/request-line-list.component';
@@ -31,7 +32,7 @@ import { RequestLineEditComponent } from './request-line/request-line-edit/reque
 
 
 const routes: Routes = [
-  {path: "",redirectTo:"/users/list", pathMatch: "full"},
+  {path: "",redirectTo:"/users/login", pathMatch: "full"},
 
   {path: "users/login", component:UserLoginComponent},
   {path: "users/list", component: UserListComponent},
@@ -54,6 +55,7 @@ const routes: Routes = [
   {path: "requests/create", component: RequestCreateComponent},
   {path: "requests/edit/:id", component: RequestEditComponent},
   {path: "requests/requestreviewedonly", component: RequestListReviewedOnlyComponent},
+  {path: "requests/disapproved/:id", component: DisapprovedComponent},
 
   {path: "requestlines/list/:id", component: RequestLineListComponent},
   {path: "requestlines/detail/:id", component: RequestLineDetailComponent},
@@ -62,7 +64,7 @@ const routes: Routes = [
   {path: "requestlines/edit/:id", component: RequestLineEditComponent},
   
 
-  {path: "**", component: UserListComponent}
+  {path: "**", component: RequestListComponent}
 ];
 
 @NgModule({

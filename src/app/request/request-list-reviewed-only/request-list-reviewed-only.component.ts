@@ -15,13 +15,14 @@ export class RequestListReviewedOnlyComponent implements OnInit {
   searchCriteria: string ="";
   currentUser = this.systemsvc.currentUser.id;
   request: Request;
+  requestId: number =0;
 
-  approved(request: Request):void{
-    
-    this.systemsvc.currentUser.isReviewer=true;
-    this.requestsvc.setToApproved(request).subscribe(
+  approved():void{
+ 
+    this.requestsvc.setToApproved(this.request).subscribe(
       res => {
-        this.request = res;
+      
+      console.debug("Set to approved:",res);
       },
       err => {
         console.error("Error approving Request:",err);
@@ -30,7 +31,7 @@ export class RequestListReviewedOnlyComponent implements OnInit {
 
   }
   rejected(request: Request):void{
-    this.systemsvc.currentUser.isReviewer=true;
+   
     this.requestsvc.setToRejected(request).subscribe(
       res => {
         this.request = res;
@@ -39,8 +40,8 @@ export class RequestListReviewedOnlyComponent implements OnInit {
         console.error("Error rejecting Request:",err);
       }
     );
-
   }
+
   constructor(
     private systemsvc: SystemService,
     private router: Router,
@@ -49,7 +50,6 @@ export class RequestListReviewedOnlyComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
     this.requestsvc.requestsToReviewNotOwned(this.currentUser).subscribe(
       res => {
         this.requests =res;

@@ -27,12 +27,10 @@
             <td>{{r.userId}}</td>
 
             <td colspan="2">
-                <button (click)="approved(request)" class="btn btn-primary">Approved</button>
+                <a routerLink="/requests/disapproved/{{r.id}}">Select</a>
             </td>
 
-            <td colspan="2">
-                <button (click)="rejected(request)" class="btn btn-primary">Rejected</button>
-            </td>
+            
         </tr>
         
     </table>

@@ -16,15 +16,18 @@ export class UserLoginComponent implements OnInit {
   login(): void{
     this.usersvc.login(this.user.userName, this.user.password).subscribe(
       res => { 
-        this.user =res;
-      this.systemsvc.currentUser=this.user;
-      console.debug("User:", res);
-      this.router.navigateByUrl("/request/list");
+        if(res != null){
+          this.user =res;
+          this.systemsvc.currentUser=this.user;
+          console.debug("User:", res);
+          this.router.navigateByUrl("/request/list");
+        }
+      
     },
     err => {
       this.message = "Username/Password not found"
       console.debug("Error logging in:", err);
-      this.router.navigateByUrl("/users/login");
+      
     }
     );
   }
