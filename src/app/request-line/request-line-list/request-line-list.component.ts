@@ -5,6 +5,7 @@ import { RequestLineService } from '../request-line.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RequestService } from 'src/app/request/request.service';
 import { Request } from 'src/app/request/request.class';
+import { tokenName } from '@angular/compiler';
 
 @Component({
   selector: 'app-request-line-list',
@@ -17,12 +18,12 @@ export class RequestLineListComponent implements OnInit {
   request: Request; 
   requestLine: RequestLine;
 
-  delete(): void{
+  delete(requestLine:RequestLine): void{
     
-    this.requestLinesvc.DeleteRequestLine(this.requestLine).subscribe(
+    this.requestLinesvc.DeleteRequestLine(requestLine).subscribe(
       res=> {
         console.debug("Requestline delete successfull!", res);
-        this.router.navigateByUrl("/requests/list/{{id}}");
+        this.refresh();
       },
       err => {
         console.error("Error requestline delete failed",err);
@@ -49,10 +50,22 @@ export class RequestLineListComponent implements OnInit {
     private requestsvc: RequestService,
     private router: Router
   ) { }
-
+    requestId: number =0;
+    refresh():void{
+      this.requestsvc.get(this.requestId).subscribe(
+        res => {
+          this.request =res;
+        console.debug("Request-lines-this request", res);
+        
+        },
+        err => {
+          console.error(err);
+        }
+      );
+    }
   ngOnInit(): any {
-    let id = this.route.snapshot.params.id;
-    this.requestsvc.get(id).subscribe(
+    this.requestId = this.route.snapshot.params.id;
+    this.requestsvc.get(this.requestId).subscribe(
       res => {
         this.request =res;
       console.debug("Request-lines-this request", res);

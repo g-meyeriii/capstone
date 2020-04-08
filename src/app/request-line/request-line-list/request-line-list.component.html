@@ -48,7 +48,7 @@
             <td>{{rl.product.price*rl.quantity | currency}}</td>
             
             <td> 
-                <a routerLink="/requestlines/delete/{{rl.id}}">Delete</a> |
+                <button (click)="delete(rl)" class="btn btn-link">Delete</button> |
                 <a routerLink="/requestlines/edit/{{rl.id}}">Edit</a>
 
             </td>

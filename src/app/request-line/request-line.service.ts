@@ -39,7 +39,7 @@ export class RequestLineService {
   }
   
   DeleteRequestLine(requestLine: RequestLine): Observable<any>{
-    return this.http.delete(`${url}/id/${requestLine.id}`) as Observable<any>;
+    return this.http.delete(`${url}/${requestLine.id}`) as Observable<any>;
   }
   
   
