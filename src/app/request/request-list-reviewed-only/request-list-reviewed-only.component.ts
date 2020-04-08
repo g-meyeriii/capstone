@@ -16,9 +16,10 @@ export class RequestListReviewedOnlyComponent implements OnInit {
   currentUser = this.systemsvc.currentUser.id;
   request: Request;
 
-  approved():void{
+  approved(request: Request):void{
+    
     this.systemsvc.currentUser.isReviewer=true;
-    this.requestsvc.setToApproved(this.request).subscribe(
+    this.requestsvc.setToApproved(request).subscribe(
       res => {
         this.request = res;
       },
@@ -28,9 +29,9 @@ export class RequestListReviewedOnlyComponent implements OnInit {
     );
 
   }
-  rejected():void{
+  rejected(request: Request):void{
     this.systemsvc.currentUser.isReviewer=true;
-    this.requestsvc.setToRejected(this.request).subscribe(
+    this.requestsvc.setToRejected(request).subscribe(
       res => {
         this.request = res;
       },

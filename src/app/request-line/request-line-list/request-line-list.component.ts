@@ -17,9 +17,21 @@ export class RequestLineListComponent implements OnInit {
   searchCriteria: string="";
   request: Request; 
   requestLine: RequestLine;
+  requestId: number =0;
+  
+  refresh():void{
+    this.requestsvc.get(this.requestId).subscribe(
+      res => {
+        this.request =res;
+      console.debug("Request-lines-this request", res);
+      },
+      err => {
+        console.error(err);
+      }
+    );
+  }
 
   delete(requestLine:RequestLine): void{
-    
     this.requestLinesvc.DeleteRequestLine(requestLine).subscribe(
       res=> {
         console.debug("Requestline delete successfull!", res);
@@ -31,12 +43,12 @@ export class RequestLineListComponent implements OnInit {
     );
   }
  
-
-  review(): void{
-    this.requestsvc.setToReview(this.request).subscribe(
+  review(request:Request): void{
+    this.requestsvc.setToReview(request).subscribe(
       res => {
-        this.request =res;
-        console.debug("Request set to review:",res);
+        this.request = res;
+        console.debug("Set to review worked");
+        this.router.navigateByUrl("/requests/list");
       },
       err => {
         console.error("Error setting to review:",err);
@@ -50,26 +62,13 @@ export class RequestLineListComponent implements OnInit {
     private requestsvc: RequestService,
     private router: Router
   ) { }
-    requestId: number =0;
-    refresh():void{
-      this.requestsvc.get(this.requestId).subscribe(
-        res => {
-          this.request =res;
-        console.debug("Request-lines-this request", res);
-        
-        },
-        err => {
-          console.error(err);
-        }
-      );
-    }
+ 
   ngOnInit(): any {
     this.requestId = this.route.snapshot.params.id;
     this.requestsvc.get(this.requestId).subscribe(
       res => {
         this.request =res;
       console.debug("Request-lines-this request", res);
-      
       },
       err => {
         console.error(err);

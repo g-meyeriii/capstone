@@ -22,7 +22,7 @@ export class RequestLineEditComponent implements OnInit {
        
     this.requestLinesvc.change(this.requestLine).subscribe(
       res => {
-       
+        this.requestLine = res;
         console.debug("RequestLine edited", res);
         
         this.router.navigateByUrl(`/requestlines/list/${this.requestLine.requestId}`);
